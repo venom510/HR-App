@@ -28,7 +28,7 @@ public class HRAppRestController {
     @GetMapping("/employee")
     public ResponseEntity<ArrayList<Employee>> getEmployee() throws FileNotFoundException, ClassNotFoundException, IOException {
         HttpHeaders responseHeaders=new HttpHeaders();
-        responseHeaders.set("Access-Control-Allow-Origin", "*");
+        responseHeaders.set("Access-Control-Allow-Origin", "*"); // Had to add this header, otherwise I was getting "Uncaught (in promise) SyntaxError: Unexpected end of JSON input" error and the function was returning nothing.
         return ResponseEntity.ok()
         .headers(responseHeaders)
         .body(service.getEmployee());

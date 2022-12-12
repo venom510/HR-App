@@ -1,0 +1,28 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <h2>Listed Employees -</h2>
+        <ul id="listOfEmployees">
+
+        </ul>
+        <p id="numberOfEmployees"></p>
+        <a href="/"><button>Home</button></a>
+        <script>
+            async function getEmployees() {
+                let emps=await fetch("http://localhost:8080/employee",{
+                    method:"get",
+                    headers: {"Accept":"application/json"}
+                }).then(Response => Response.json());
+                emps.forEach(emp => {
+                    let data="Id: "+emp.id+"<br>Name: "+emp.name+"<br>Salary: "+emp.salary;
+                    tag=document.createElement("li");
+                    tag.innerHTML=data;
+                    document.getElementById("listOfEmployees").appendChild(tag);
+                });
+                document.getElementById("numberOfEmployees").innerText="Total Employees: "+emps.length;
+            }
+            getEmployees()
+        </script>
+    </body>
+</html>

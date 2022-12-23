@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <h2>Enter the Id to be deleted -</h2>
+        <form action="javascript:void(0);" onsubmit=deleteEmployee()>
+            <label>Employee Id:</label><br>
+            <input type="number" id="empID"><br>
+            <input type="submit" value="Delete"><br>
+        </form>
+        <hr color="black">
+        <p id="resultOfDelete"></p><br>
+        <a href="/"><button>Home</button></a>
+        <script>
+            async function deleteEmployee() {
+                var empID=document.getElementById("empID").value;
+                var url="http://localhost:8080/employee/"+empID;
+                let result=await fetch(url,{
+                    method:"get",
+                    headers: {"Accept":"application/json"}
+                });
+                if(await result.ok)
+                {
+                    var url="http://localhost:8080/delete/employee/"+empID;
+                    fetch(url,{
+                        method:"delete"
+                    });
+                    // var data="Employee with id "+emp.id+" is successfully deleted.";
+                    document.getElementById("resultOfDelete").innerText="Employee with id "+empID+" is successfully deleted.";
+                }
+                else
+                {
+                    document.getElementById("resultOfDelete").innerText="Employee not found.";
+                }
+            }
+        </script>
+    </body>
+</html>

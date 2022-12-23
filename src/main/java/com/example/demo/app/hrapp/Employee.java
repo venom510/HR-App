@@ -1,21 +1,23 @@
 package com.example.demo.app.hrapp;
 
-import java.io.Serializable;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 
-public class Employee implements Serializable{
+@Entity
+public class Employee{
+    @Id
+    @GeneratedValue
     private int id;
     private String name;
     private double salary;
-    public Employee(int id,String name, double salary) {
-        setId(id);
+    public Employee() {}
+    public Employee(String name, double salary) {
         setName(name);
         setSalary(salary);
     }
     public int getId() {
         return id;
-    }
-    public void setId(int id) {
-        this.id = id;
     }
     public String getName() {
         return name;

@@ -40,12 +40,11 @@ Started this to learn java and spring boot. Will try to work more on this, to ke
 
 ### To-Do (Not an exhaustive list. Will keep on updating this as well)
 1. Add proper exception handling
-2. Use database instead of files for persisting the data (Start working with spring-boot-jpa)
-3. Instead of creating own HTML templates and handling everything, use plugins or dependencies in spring boot, such as thymeleaf
-4. Add more features such as delete employee, search on the basis of different filters, etc
-5. Add department info as well, and corresponding connections between department and employees
-6. Add login feature
-7. Improve the frontend
+2. Instead of creating own HTML templates and handling everything, use plugins or dependencies in spring boot, such as thymeleaf
+3. Add more features such as search on the basis of different filters, etc
+4. Add department info as well, and corresponding connections between department and employees
+5. Add login feature
+6. Improve the frontend
 
 
 

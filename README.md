@@ -1,11 +1,11 @@
 # HR-App
-A basic HR app with features to add, list and search employees.
-You can add employee details (Id, Name and Salary), list all the existing employees or search an employee by id. Deletion ability is not added yet.
+A basic HR app with features to add, list, search, update and delete employees.
+You can add employee details (Id, Name and Salary), list all the existing employees, search an employee by id, update name or salary of an existing employee, or delete an existing employee.
 
-Currently, there is no database connection. The data is being stored in a file only (using Java serialization).
+An in-memory database (H2 database) has been used to persist the data.
 
 There are separate HTML pages linked together to serve the information.
-Rest APIs are written in Java. Used spring boot framework. Also, used some javascript in the HTML pages to use the fetch API for running GET and POST requests.
+Rest APIs are written in Java. Used spring boot framework. Also, used some javascript in the HTML pages to use the fetch API for calling the REST endpoints.
 
 Started this to learn java and spring boot. Will try to work more on this, to keep applying new things as I keep learning them.
 

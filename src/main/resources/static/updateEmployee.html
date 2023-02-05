@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <h2>Choose what needs to be updated - </h2>
+        <form>
+            <input type="radio" name="choice" onclick="loadUpdateForm('name')">
+            <label for="name">Name</label><br>
+            <input type="radio" name="choice" onclick="loadUpdateForm('salary')">
+            <label for="salary">Salary</label><br>
+        </form>
+        <br><br>
+        
+        <form action="javascript:void(0);" id="inputForm" onsubmit=updateEmployee()>
+        </form>
+        <br><br>
+        <a href="/"><button>Home</button></a>
+
+        <script>
+            function loadUpdateForm(property) {
+                var data='<label>Id:</label><br><input type="number" id="empId"><br>';
+                if(property == 'name')
+                {
+                    data+='<label>New Name:</label><br><input type="text" id="newName"><br><input type="submit" value="Update">';
+                }
+                else
+                {
+                    data+='<label>New Salary:</label><br><input type="number" id="newSalary"><br><input type="submit" value="Update">';
+                }
+                document.getElementById("inputForm").innerHTML=data;
+            }
+
+            async function updateEmployee() {
+                var val1=document.getElementById("newName");
+                var val2=document.getElementById("newSalary");
+                var result;
+                if(val1)
+                {
+                    var empId=document.getElementById("empId").value;
+                    var newName=val1.value;
+                    result=await fetch("/update/employee/name/"+empId+"?name="+newName,{method:"put"});
+                }
+                else
+                {
+                    var empId=document.getElementById("empId").value;
+                    var newSalary=val2.value;
+                    var result=await fetch("/update/employee/salary/"+empId+"?salary="+newSalary,{method:"put"});
+                }
+                if(await result.ok)
+                {
+                    alert("Employee updated successfully!");
+                }
+                else
+                {
+                    alert("Failed to update employee!. There is no employee with id "+empId+".");
+                }
+            }
+        </script>
+    </body>
+</html>
